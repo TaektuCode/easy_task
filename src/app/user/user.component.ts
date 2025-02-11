@@ -30,8 +30,8 @@ export class UserComponent {
   //   const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   //   this.selectedUser.set(DUMMY_USERS[randomIndex]);
   // }
-  @Input() avatar!: string; // to set property inside an Component <app-user avatar=" ">
-  @Input() name!: string;
+  @Input({ required: true }) avatar!: string; // to set property inside an Component <app-user avatar=" ">
+  @Input({ required: true }) name!: string;
 
   get imagePath() {
     return 'assets/users/' + this.avatar;
