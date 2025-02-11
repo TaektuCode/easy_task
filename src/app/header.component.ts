@@ -1,0 +1,8 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-header',
+  standalone: true, // only needs to specify Angular version <19.xx
+  templateUrl: './header.component.html',
+})
+export class HeaderComponent {}
