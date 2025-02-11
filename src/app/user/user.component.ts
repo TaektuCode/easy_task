@@ -14,7 +14,14 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 export class UserComponent {
   selectedUser = DUMMY_USERS[randomIndex];
 
+  // Getter Method for the imagePath of the user
   get imagePath() {
     return 'assets/users/' + this.selectedUser.avatar;
+  }
+
+  // Get a new user from "DUMMY_USERS" when button is clicked
+  onSelectUser() {
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectedUser = DUMMY_USERS[randomIndex];
   }
 }
