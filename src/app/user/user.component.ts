@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // get a random nummer of the Array.length Dummy Users
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -21,21 +21,28 @@ export class UserComponent {
   //   const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   //   this.selectedUser = DUMMY_USERS[randomIndex];
   // }
-
-  // WITH SIGNAL
-  // selectedUser = signal(DUMMY_USERS[randomIndex]);
-  // imagePath = computed(() => 'assets/users' + this.selectedUser().avatar);
-
-  // onSelectUser() {
-  //   const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-  //   this.selectedUser.set(DUMMY_USERS[randomIndex]);
-  // }
+  @Input({ required: true }) id!: string;
   @Input({ required: true }) avatar!: string; // to set property inside an Component <app-user avatar=" ">
   @Input({ required: true }) name!: string;
+  @Output() select = new EventEmitter();
 
   get imagePath() {
     return 'assets/users/' + this.avatar;
   }
 
-  onSelectUser() {}
+  // WITH SIGNAL
+  // selectedUser = signal(DUMMY_USERS[randomIndex]);
+
+  // onSelectUser() {
+  //   const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+  //   this.selectedUser.set(DUMMY_USERS[randomIndex]);
+  // }
+  // avatar = input.required<string>(); //generic function
+  // name = input.required<string>();
+
+  // imagePath = computed(() => 'assets/users/' + this.avatar());
+
+  onSelectUser() {
+    this.select.emit(this.id);
+  }
 }

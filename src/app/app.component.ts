@@ -12,4 +12,8 @@ import { DUMMY_USERS } from './dummy-users';
 export class AppComponent {
   title = 'easy_task';
   users = DUMMY_USERS; //to impose the data in the template
+
+  onSelectUser(id: string) {
+    console.log('Selected user with id ' + id);
+  }
 }
