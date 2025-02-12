@@ -21,14 +21,16 @@ export class UserComponent {
   //   const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   //   this.selectedUser = DUMMY_USERS[randomIndex];
   // }
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) avatar!: string; // to set property inside an Component <app-user avatar=" ">
-  @Input({ required: true }) name!: string;
+  @Input({ required: true }) user!: {
+    id: string;
+    avatar: string;
+    name: string;
+  };
   @Output() select = new EventEmitter<string>();
   // select = output<string>();
 
   get imagePath() {
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   // WITH SIGNAL
@@ -44,6 +46,6 @@ export class UserComponent {
   // imagePath = computed(() => 'assets/users/' + this.avatar());
 
   onSelectUser() {
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 }
