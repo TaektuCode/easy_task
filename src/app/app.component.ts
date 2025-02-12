@@ -13,7 +13,7 @@ import { TasksComponent } from './tasks/tasks.component';
 export class AppComponent {
   title = 'easy_task';
   users = DUMMY_USERS; //to impose the data in the template
-  selectedUserId = 'u1';
+  selectedUserId?: string;
 
   get selectedUser() {
     return this.users.find((user) => user.id === this.selectedUserId);
